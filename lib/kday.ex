@@ -37,7 +37,7 @@ defmodule Kday do
           Calendar.day() | Date.t()
 
   def kday_on_or_before(%{year: _, month: _, day: _, calendar: calendar} = date, k)
-      when k in 1..7 do
+      when k in 1..@days_in_a_week do
     date
     |> Date.to_gregorian_days
     |> kday_on_or_before(k)
@@ -78,7 +78,7 @@ defmodule Kday do
           Calendar.day() | Date.t()
 
   def kday_on_or_after(%{year: _, month: _, day: _, calendar: calendar} = date, k)
-      when k in 1..7 do
+      when k in 1..@days_in_a_week do
     date
     |> Date.to_gregorian_days
     |> kday_on_or_after(k)
@@ -86,7 +86,7 @@ defmodule Kday do
   end
 
   def kday_on_or_after(iso_days, k) when is_integer(iso_days) do
-    kday_on_or_before(iso_days + 7, k)
+    kday_on_or_before(iso_days + @days_in_a_week, k)
   end
 
   @doc """
@@ -119,7 +119,7 @@ defmodule Kday do
           Calendar.day() | Date.t()
 
   def kday_nearest(%{year: _, month: _, day: _, calendar: calendar} = date, k)
-      when k in 1..7 do
+      when k in 1..@days_in_a_week do
     date
     |> Date.to_gregorian_days
     |> kday_nearest(k)
@@ -161,7 +161,7 @@ defmodule Kday do
           Calendar.day() | Date.t()
 
   def kday_before(%{year: _, month: _, day: _, calendar: calendar} = date, k)
-      when k in 1..7 do
+      when k in 1..@days_in_a_week do
     date
     |> Date.to_gregorian_days
     |> kday_before(k)
@@ -206,7 +206,7 @@ defmodule Kday do
           Calendar.day() | Date.t()
 
   def kday_after(%{year: _, month: _, day: _, calendar: calendar} = date, k)
-      when k in 1..7 do
+      when k in 1..@days_in_a_week do
     date
     |> Date.to_gregorian_days()
     |> kday_after(k)
@@ -254,7 +254,7 @@ defmodule Kday do
           Calendar.day() | Date.t()
 
   def nth_kday(%{year: _, month: _, day: _, calendar: calendar} = date, n, k)
-      when k in 1..7 and is_integer(n) do
+      when k in 1..@days_in_a_week and is_integer(n) do
     date
     |> Date.to_gregorian_days
     |> nth_kday(n, k)
@@ -299,7 +299,7 @@ defmodule Kday do
           Calendar.day() | Date.t()
 
   def first_kday(%{year: _, month: _, day: _, calendar: calendar} = date, k)
-      when k in 1..7 do
+      when k in 1..@days_in_a_week do
     date
     |> Date.to_gregorian_days
     |> first_kday(k)
@@ -336,7 +336,7 @@ defmodule Kday do
           Calendar.day() | Date.t()
 
   def last_kday(%{year: _, month: _, day: _, calendar: calendar} = date, k)
-      when k in 1..7 do
+      when k in 1..@days_in_a_week do
     date
     |> Date.to_gregorian_days
     |> last_kday(k)
@@ -370,7 +370,7 @@ defmodule Kday do
   """
   @spec iso_days_to_day_of_week(integer()) :: Calendar.day_of_week()
   def iso_days_to_day_of_week(iso_day_number) when is_integer(iso_day_number) do
-    Integer.mod(iso_day_number + 5, 7) + 1
+    Integer.mod(iso_day_number + 5, @days_in_a_week) + 1
   end
 
   @doc """
