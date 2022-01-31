@@ -1,5 +1,13 @@
 # Changelog
 
+## Kday v1.0.1
+
+This is the changelog for Kday v1.0.1 released on January 31st, 2021.  For older changelogs please consult the release tag on [GitHub](https://github.com/kipcole9/kday/tags)
+
+### Bug Fixes
+
+* Fixes `nth_kday/3` when the provided `kday` is the same day of the week as the day of the provided `date`. Thanks to @gworkman for the report and the PR.
+
 ## Kday v1.0.0
 
 This is the changelog for Kday v1.0.0 released on October 31st, 2021.  For older changelogs please consult the release tag on [GitHub](https://github.com/kipcole9/kday/tags)
