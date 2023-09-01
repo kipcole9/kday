@@ -6,7 +6,7 @@ This is the changelog for Kday v1.0.2 released on September 1st, 2023.  For olde
 
 ### Bug Fixes
 
-* Fix `Kday.iso_days_to_day_of_week/1`. Thanks to @puruzio for the report. Closes #2,
+* Fix `Kday.iso_days_to_day_of_week/1`. Thanks to @puruzio for the report. Closes #2.
 
 ## Kday v1.0.1
 
