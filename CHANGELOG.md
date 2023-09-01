@@ -1,5 +1,13 @@
 # Changelog
 
+## Kday v1.0.2
+
+This is the changelog for Kday v1.0.2 released on September 1st, 2023.  For older changelogs please consult the release tag on [GitHub](https://github.com/kipcole9/kday/tags)
+
+### Bug Fixes
+
+* Fix `Kday.iso_days_to_day_of_week/1`. Thanks to @puruzio for the report. Closes #2,
+
 ## Kday v1.0.1
 
 This is the changelog for Kday v1.0.1 released on January 31st, 2021.  For older changelogs please consult the release tag on [GitHub](https://github.com/kipcole9/kday/tags)
