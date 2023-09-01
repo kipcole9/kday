@@ -1,5 +1,5 @@
 # Kday
-
+![Build status](https://github.com/kipcole9/kday/actions/workflows/main.yml/badge.svg)
 [![Hex.pm](https://img.shields.io/hexpm/v/kday.svg)](https://hex.pm/packages/kday)
 [![Hex.pm](https://img.shields.io/hexpm/dw/kday.svg?)](https://hex.pm/packages/kday)
 [![Hex.pm](https://img.shields.io/hexpm/dt/kday.svg?)](https://hex.pm/packages/kday)
