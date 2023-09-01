@@ -14,7 +14,7 @@ defmodule Kday do
   ## Arguments
 
   * `date` is `t:Date.t/0`, a `t:DateTime.t/0`, `t:NaiveDateTime.t/0` or
-    ISO days since epoch.
+    Gregorian days since epoch.
 
   * `k` is an integer day of the week where Monday
     is represented by `1` and Sunday is represented by `7`.
@@ -49,8 +49,8 @@ defmodule Kday do
     |> Date.from_gregorian_days(calendar)
   end
 
-  def kday_on_or_before(iso_days, k) when is_integer(iso_days) do
-    iso_days - iso_days_to_day_of_week(iso_days - k)
+  def kday_on_or_before(gregorian_days, k) when is_integer(gregorian_days) do
+    gregorian_days - gregorian_days_to_day_of_week(gregorian_days - k)
   end
 
   @doc """
@@ -60,7 +60,7 @@ defmodule Kday do
   ## Arguments
 
   * `date` is `t:Date.t/0`, a `t:DateTime.t/0`, `t:NaiveDateTime.t/0` or
-    ISO days since epoch.
+    Gregorian days since epoch.
 
   * `k` is an integer day of the week where Monday
     is represented by `1` and Sunday is represented by `7`.
@@ -92,8 +92,8 @@ defmodule Kday do
     |> Date.from_gregorian_days(calendar)
   end
 
-  def kday_on_or_after(iso_days, k) when is_integer(iso_days) do
-    kday_on_or_before(iso_days + 6, k)
+  def kday_on_or_after(gregorian_days, k) when is_integer(gregorian_days) do
+    kday_on_or_before(gregorian_days + 6, k)
   end
 
   @doc """
@@ -103,7 +103,7 @@ defmodule Kday do
   ## Arguments
 
   * `date` is `t:Date.t/0`, a `t:DateTime.t/0`, `t:NaiveDateTime.t/0` or
-    ISO days since epoch.
+    Gregorian days since epoch.
 
   * `k` is an integer day of the week where Monday
     is represented by `1` and Sunday is represented by `7`.
@@ -135,8 +135,8 @@ defmodule Kday do
     |> Date.from_gregorian_days(calendar)
   end
 
-  def kday_nearest(iso_days, k) when is_integer(iso_days) do
-    kday_on_or_before(iso_days + 3, k)
+  def kday_nearest(gregorian_days, k) when is_integer(gregorian_days) do
+    kday_on_or_before(gregorian_days + 3, k)
   end
 
   @doc """
@@ -146,7 +146,7 @@ defmodule Kday do
   ## Arguments
 
   * `date` is `t:Date.t/0`, a `t:DateTime.t/0`, `t:NaiveDateTime.t/0` or
-    ISO days since epoch.
+    Gregorian days since epoch.
 
   * `k` is an integer day of the week where Monday
     is represented by `1` and Sunday is represented by `7`.
@@ -179,8 +179,8 @@ defmodule Kday do
     |> Date.from_gregorian_days(calendar)
   end
 
-  def kday_before(iso_days, k) do
-    kday_on_or_before(iso_days - 1, k)
+  def kday_before(gregorian_days, k) do
+    kday_on_or_before(gregorian_days - 1, k)
   end
 
   @doc """
@@ -190,7 +190,7 @@ defmodule Kday do
   ## Arguments
 
   * `date` is `t:Date.t/0`, a `t:DateTime.t/0`, `t:NaiveDateTime.t/0` or
-    ISO days since epoch.
+    Gregorian days since epoch.
 
   * `k` is an integer day of the week where Monday
     is represented by `1` and Sunday is represented by `7`.
@@ -225,8 +225,8 @@ defmodule Kday do
     |> Date.from_gregorian_days(calendar)
   end
 
-  def kday_after(iso_days, k) do
-    kday_on_or_after(iso_days + 1, k)
+  def kday_after(gregorian_days, k) do
+    kday_on_or_after(gregorian_days + 1, k)
   end
 
   @doc """
@@ -236,7 +236,7 @@ defmodule Kday do
   ## Arguments
 
   * `date` is `t:Date.t/0`, a `t:DateTime.t/0`, `t:NaiveDateTime.t/0` or
-    ISO days since epoch.
+    Gregorian days since epoch.
 
   * `n` is the cardinal number of `k` before (negative `n`) or after
     (positive `n`) the specified date
@@ -274,12 +274,12 @@ defmodule Kday do
     |> Date.from_gregorian_days(calendar)
   end
 
-  def nth_kday(iso_days, n, k) when is_integer(iso_days) and n > 0 do
-    weeks_to_days(n) + kday_on_or_before(iso_days, k)
+  def nth_kday(gregorian_days, n, k) when is_integer(gregorian_days) and n > 0 do
+    weeks_to_days(n) + kday_on_or_before(gregorian_days, k)
   end
 
-  def nth_kday(iso_days, n, k) when is_integer(iso_days) do
-    weeks_to_days(n) + kday_on_or_after(iso_days, k)
+  def nth_kday(gregorian_days, n, k) when is_integer(gregorian_days) do
+    weeks_to_days(n) + kday_on_or_after(gregorian_days, k)
   end
 
   @doc """
@@ -289,7 +289,7 @@ defmodule Kday do
   ## Arguments
 
   * `date` is `t:Date.t/0`, a `t:DateTime.t/0`, `t:NaiveDateTime.t/0` or
-    ISO days since epoch.
+    Gregorian days since epoch.
 
   * `k` is an integer day of the week where Monday
     is represented by `1` and Sunday is represented by `7`.
@@ -320,8 +320,8 @@ defmodule Kday do
     |> Date.from_gregorian_days(calendar)
   end
 
-  def first_kday(iso_days, k) do
-    nth_kday(iso_days, 1, k)
+  def first_kday(gregorian_days, k) do
+    nth_kday(gregorian_days, 1, k)
   end
 
   @doc """
@@ -331,7 +331,7 @@ defmodule Kday do
   ## Arguments
 
   * `date` is `t:Date.t/0`, a `t:DateTime.t/0`, `t:NaiveDateTime.t/0` or
-    ISO days since epoch.
+    Gregorian days since epoch.
 
   * `k` is an integer day of the week where Monday
     is represented by `1` and Sunday is represented by `7`.
@@ -358,17 +358,17 @@ defmodule Kday do
     |> Date.from_gregorian_days(calendar)
   end
 
-  def last_kday(iso_days, k) do
-    nth_kday(iso_days, -1, k)
+  def last_kday(gregorian_days, k) do
+    nth_kday(gregorian_days, -1, k)
   end
 
   @doc """
   Returns the day of the week for a given
-  `iso_day_number`
+  `gregorian_day_number`.
 
   ## Arguments
 
-  * `iso_day_number` is the number of days since the start
+  * `gregorian_day_number` is the number of days since the start
     of the epoch.
 
   ## Returns
@@ -379,17 +379,17 @@ defmodule Kday do
   ## Examples
 
       iex> days = Date.to_gregorian_days ~D[2019-01-01]
-      iex> Kday.iso_days_to_day_of_week(days) == 2
+      iex> Kday.gregorian_days_to_day_of_week(days) == 2
       true
 
   """
-  @spec iso_days_to_day_of_week(integer()) :: Calendar.day_of_week()
-  def iso_days_to_day_of_week(iso_day_number) when is_integer(iso_day_number) do
-    Integer.mod(iso_day_number + 6, @days_in_a_week)
+  @spec gregorian_days_to_day_of_week(integer()) :: Calendar.day_of_week()
+  def gregorian_days_to_day_of_week(gregorian_day_number) when is_integer(gregorian_day_number) do
+    Integer.mod(gregorian_day_number + 6, @days_in_a_week)
   end
 
   @doc """
-  Returns the number of days in `n` weeks
+  Returns the number of days in `n` weeks.
 
   ## Example
 
