@@ -82,7 +82,7 @@ defmodule Kday.MixProject do
   defp deps do
     [
       {:ex_doc, "~> 0.21", optional: true, runtime: false},
-      {:dialyxir, "~> 1.0", optional: true, only: [:dev], runtime: false}
+      {:dialyxir, "~> 1.0", optional: true, only: [:dev, :test], runtime: false}
     ]
   end
 
