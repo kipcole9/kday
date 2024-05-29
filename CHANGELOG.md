@@ -1,5 +1,17 @@
 # Changelog
 
+## Kday v1.1.0
+
+This is the changelog for Kday v1.1.0 released on May 30th, 2024.  For older changelogs please consult the release tag on [GitHub](https://github.com/kipcole9/kday/tags)
+
+### Bug Fixes
+
+* Fixes `Kday.nth_kday/3`
+
+### Enhancements
+
+* Adds `Kday.day_of_week/1`
+
 ## Kday v1.0.2
 
 This is the changelog for Kday v1.0.2 released on September 1st, 2023.  For older changelogs please consult the release tag on [GitHub](https://github.com/kipcole9/kday/tags)

@@ -275,11 +275,11 @@ defmodule Kday do
   end
 
   def nth_kday(gregorian_days, n, k) when is_integer(gregorian_days) and n > 0 do
-    weeks_to_days(n) + kday_on_or_before(gregorian_days, k)
+    kday_on_or_after(gregorian_days, k) + weeks_to_days(n - 1)
   end
 
   def nth_kday(gregorian_days, n, k) when is_integer(gregorian_days) do
-    weeks_to_days(n) + kday_on_or_after(gregorian_days, k)
+    kday_on_or_before(gregorian_days, k) + weeks_to_days(n + 1)
   end
 
   @doc """
@@ -353,13 +353,39 @@ defmodule Kday do
   def last_kday(%{year: _, month: _, day: _, calendar: calendar} = date, k)
       when k in 1..@days_in_a_week do
     date
-    |> Date.to_gregorian_days
+    |> Date.to_gregorian_days()
     |> last_kday(k)
     |> Date.from_gregorian_days(calendar)
   end
 
   def last_kday(gregorian_days, k) do
     nth_kday(gregorian_days, -1, k)
+  end
+
+  @doc """
+  Returns the day of the week for a given
+  `t:Date.t/0`.
+
+  ## Arguments
+
+  * `date` is `t:Date.t/0` or `t:DateTime.t/0`.
+
+  ## Returns
+
+  * An integer representing a day of the week where Monday
+    is represented by `1` and Sunday is represented by `7`.
+
+  ## Examples
+
+      iex> Kday.day_of_week(~D[2019-01-01]) == 2
+      true
+
+  """
+  @spec day_of_week(Date.t()) :: Calendar.day_of_week()
+  def day_of_week(date) do
+    date
+    |> Date.to_gregorian_days()
+    |> gregorian_days_to_day_of_week()
   end
 
   @doc """
